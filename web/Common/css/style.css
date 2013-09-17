@@ -1,0 +1,146 @@
+/*菊花*/
+.loading {
+    margin:auto;
+}
+
+.loading span{
+    line-height: 32px;
+    margin-left: 12px;
+    font-size: 16px;
+    vertical-align: middle;
+}
+
+.loading img{
+    vertical-align: middle;
+}
+
+.loading_wrp {
+    background-color: #FFF;
+    display: block;
+    height:  100%;
+    left: 0;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 10000;
+}
+
+.loading_wrp .x16 span{
+    line-height: 16px;
+    font-size: 12px;
+    margin-left: 6px;
+}
+.loading_wrp .x32 img{
+    width: 32px;
+    height: 32px;
+}
+.empty{
+    text-align: center;
+    padding-top: 30px;
+    color:#ccc;
+}
+
+.wrapper{
+    width:1000px;
+    margin: 0 auto;
+}
+.sidebar{
+    width:200px;
+    border-right:1px solid #ccc;
+    position: absolute;
+    left:0;
+    top:0;
+    bottom:0;
+}
+
+.content{
+    width:800px;
+    position: absolute;
+    left:200px;
+    top:0;
+    bottom:0;
+}
+.content .file_list{
+    position: absolute;
+    left:0;
+    top:47px;
+    right:0;
+    bottom:0;
+    overflow: auto;
+}
+.wrapper .main{
+    background: #fff;
+    border:1px solid #ccc;
+    border-radius: 5px;
+    position: absolute;
+    top:60px;
+    bottom:20px;
+    width:1000px;
+}
+.header{
+    height: 40px;
+    line-height: 40px;
+    padding: 10px 0;
+}
+.header h1{
+    font-size: 20px;
+}
+
+.content .content_header{
+    border-bottom: 1px solid #ccc;
+    padding:10px;
+}
+
+.view_as_thumb .file_item{
+    width:180px;
+    padding:0;
+    float: left;
+    display: inline;
+    margin:10px 0 10px 60px;
+    border:0;
+    padding:0 0 10px 0;
+}
+.view_as_thumb .file_item .thumb_wrapper{
+    height: 180px;
+    width:180px;
+    text-align: center;
+    display: table-cell;
+    vertical-align:middle;
+    /* 针对IE的Hack */
+    *display: block;
+    *font-size: 158px;/*约为高度的0.873，200*0.873 约为175*/
+    *font-family:Arial;/*防止非utf-8引起的hack失效问题，如gbk编码*/
+}
+.view_as_thumb .file_item .thumb_wrapper img{
+    vertical-align: middle;
+}
+.view_as_thumb .file_item .filename{
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    -webkit-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    -moz-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    margin: -10px 0 10px 0;
+}
+.view_as_thumb .file_item .filename,
+.view_as_thumb .file_item .filename a{
+    color:#434343;
+    font-weight: bold;
+    font-size: 14px;
+    font-family: "hiragino sans gb","Helvetica Neue","Helvetica","Arial","Microsoft Yahei","宋体", "simsun","sans-serif";
+}
+.view_as_thumb .file_item .filename a.name:hover{
+    text-decoration: underline;
+}
+.view_as_thumb .file_item .btn_wrp{
+    float: none;
+    display: block;
+    margin: 0;
+    text-align: center;
+    width: auto;
+
+}
