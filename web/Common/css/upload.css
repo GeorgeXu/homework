@@ -1,0 +1,205 @@
+.upload_wrapper{
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    _width:expression(documentElement.clientWidth + "px");
+    _height:expression(documentElement.clientHeight + "px");
+}
+
+.upload_wrapper .upload_top{
+    height: 47px;
+    line-height: 47px;
+    background: #F3F3F4;
+    box-shadow: inset 0 1px 1px #fff;
+    border-bottom: 1px solid #E1E1E1;
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    padding: 0 18px;
+    font-size: 14px;
+    _padding:0;
+    _width: 100%;
+}
+.upload_wrapper .upload_top .upload_top_iframe{
+    display: none;
+}
+.upload_wrapper .upload_wrapper_main{
+    position: absolute;
+    top:48px;
+    left:0;
+    right:0;
+    bottom:56px;
+    background: #fff;
+    _width: 100%;
+    _height:expression((document.body.clientHeight-48-56) + "px");
+}
+.upload_wrapper .upload_wrapper_main .upload_list{
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    overflow: auto;
+    _height: 100%;
+    _width: 100%;
+}
+.upload_wrapper .upload_wrapper_bottom{
+    position: absolute;
+    height: 55px;
+    left:0;
+    right:0;
+    bottom: 0;
+    background: #F3F3F4;
+    box-shadow: inset 0 1px 1px #fff;
+    border-top: 1px solid #E1E1E1;
+    padding: 0 18px;
+    _width:100%;
+    _padding:0;
+}
+.upload_wrapper .upload_list .no_content{
+    padding-top: 120px;
+    text-align: center;
+    margin: 0 10px;
+}
+.upload_wrapper .upload_item .progress_bg_bar{
+    height: 100%;
+    background: #C6F96C url(/Common/images/storage/upload_progress_bg.png);
+    width: 0;
+    margin: 0;
+    position: absolute;
+}
+.upload_wrapper .upload_item{
+    padding-top: 0;
+    padding-bottom: 0;
+    height: 52px;
+    position: relative;
+}
+.upload_wrapper .upload_item .filename{
+    width: 300px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0 0 0 15px;
+}
+
+.upload_wrapper .upload_item .item_content{
+    line-height: 34px;
+    height: 100%;
+    position: relative;
+}
+.upload_wrapper .upload_item .stat{
+    /*   width: 130px;*/
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.upload_wrapper .upload_item .upload_msg{
+    display: none;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.upload_wrapper .upload_item .item_content .f_l,
+.upload_wrapper .upload_item .item_content .f_r{
+    margin-top: 9px;
+}
+.upload_wrapper .upload_item .cancel{
+    margin: 0 20px 0 0;
+    display: none;
+}
+.upload_wrapper .upload_wrapper_bottom {
+    line-height: 26px;
+}
+.upload_wrapper .upload_wrapper_bottom .f_l,
+.upload_wrapper .upload_wrapper_bottom .f_r{
+    margin:14px 0 0 0;
+}
+.upload_wrapper .upload_wrapper_bottom .f_r{
+    font-size: 14px;
+}
+.upload_wrapper .upload_wrapper_bottom .btn{
+
+}
+.upload_wrapper .upload_wrapper_bottom .open_new_uploader,
+.upload_wrapper .upload_wrapper_bottom #select_from_gokuai{
+    margin-left: 10px;
+}
+.upload_wrapper .select_file_wrapper{
+    position: relative;
+    width: 102px;
+    height: 26px;
+    line-height: 26px;
+    text-align: center;
+    padding: 0;
+}
+
+.upload_wrapper #select_files{
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    font-size: 23px;
+    direction: ltr;
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+    z-index: 99;
+}
+.upload_page #drop_zone{
+    display: none;
+    position:absolute;
+    font-size:14px;
+    font-weight:700;
+    z-index:30;
+    height:30px;
+    line-height:30px;
+    text-align:center;
+    width:200px;
+    left:50%;
+    top:50%;
+    margin:-15px 0 0 -100px;
+    color:#fff;
+}
+.upload_page .ui-widget-overlay{
+    display: none;
+    width: 100%;
+    height: 100%;
+}
+.upload_item .upload_msg{
+    width: 150px;
+    overflow: hidden;
+    white-space: normal;
+    text-overflow:ellipsis;
+}
+.upload_wrapper .upload_desc{
+    text-align: center;
+}
+
+.upload_wrapper .upload_desc{
+    display: none;
+}
+
+@media all and (max-device-width: 720px){
+    .upload_wrapper .upload_item .filename{
+        width:120px;
+        margin-left: 10px;
+    }
+    .upload_wrapper .upload_item .stat{
+        width: 150px;
+    }
+    .upload_item .upload_msg{
+        display: none;
+        width: 130px;
+    }
+    .upload_wrapper .upload_item .item_content .file_icon{
+        display: none;
+    }
+}

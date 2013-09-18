@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <publish_page name="学生作业系统" logo_url="http://www.gokuai.com/Common/images/logo/logo100x40_black.png" background_color="#F3F3F4">
     <nodes name="计算机" base_path="/课程/计算机">
-        <node name="教学资料" path="教学资料" access="view">
+        <node name="教学资料" path="教学资料" access="upload|view|download">
             <condition>
                 <!--<![CDATA[-->
                 <!--{exclude:'dd'}-->
                 <!--]]>-->
             </condition>
         </node>
-        <node name="徐葛的作业" path="007徐葛的作业" access="upload|download|view"></node>
+        <node name="徐葛的作业" path="学生的作业/007徐葛的作业" access="upload|download|view"></node>
     </nodes>
     <nodes name="高等数学" base_path="/课程/高等数学">
         <node name="教学资料" path="教学资料" access="download|view"></node>
-        <node name="徐葛的作业" path="007徐葛的作业" access="upload|download|view"></node>
+        <node name="徐葛的作业" path="学生的作业/007徐葛的作业" access="upload|download|view"></node>
     </nodes>
 </publish_page>

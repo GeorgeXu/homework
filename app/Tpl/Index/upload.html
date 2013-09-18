@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>上传文件</title>
+    <link rel="stylesheet" type="text/css" href="/Common/css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="/Common/css/upload.css"/>
+    <script type="text/javascript" src="/Common/js/util.js"></script>
+    <script type="text/javascript" src="/Common/js/lib/json2.js"></script>
+    <script type="text/javascript" src="/Common/js/lib/jquery.js"></script>
+    <script type="text/javascript" src="/Common/js/lib/jquery.tmpl.min.js"></script>
+    <script type="text/javascript" src="/Common/js/lib/jquery-ui/jquery-ui.js"></script>
+    <script type="text/javascript" src="/Common/js/lib/upload/fileprogress.js"></script>
+    <script type="text/javascript" src="/Common/js/lib/upload/jquery.iframe-transport.js"></script>
+    <script type="text/javascript" src="/Common/js/lib/upload/jquery.fileupload.js"></script>
+    <script type="text/javascript" src="/Common/js/component/alert.js"></script>
+    <script type="text/javascript" src="/Common/js/component/loader.js"></script>
+    <script type="text/javascript" src="/Common/js/script.js"></script>
+    <script type="text/javascript">
+        var PAGE_CONFIG = {
+            fileSizeLimit: "{:htmlspecialchars($_GET['fileSizeLimit'])}",
+            uploadParams: JSON.parse(decodeURIComponent('{:htmlspecialchars($_GET["uploadParams"])}')),
+            uploadURL: "/index/upload_file",
+            redirectURL: "{:htmlspecialchars($_GET['redirectURL'])}",
+            stopCallback: "{:htmlspecialchars($_GET['stopCallback'])}",
+            denyExts: "{:htmlspecialchars($_GET['denyExts'])}",
+            ajaxCopy: "{:htmlspecialchars($_GET['ajaxCopy'])}",
+            allowExts: "{:htmlspecialchars($_GET['allowExts'])}"
+        };
+        $(function () {
+            var breads = gkHomeWorkDemo.getBreads(window.opener.PAGE_CONFIG.path || '');
+            var breadTmpl = $('#breadTmpl').tmpl({
+                breads:breads
+            });
+            $('.upload_top .bread').empty().append(breadTmpl);
+            $.fn.gkUpload.init({
+                fileSizeLimit: PAGE_CONFIG.fileSizeLimit,
+                redirectURL: PAGE_CONFIG.redirectURL,
+                uploadURL: PAGE_CONFIG.uploadURL,
+                uploadParams: PAGE_CONFIG.uploadParams,
+                stopCallback: PAGE_CONFIG.stopCallback,
+                denyExts: PAGE_CONFIG.denyExts,
+                ajaxCopy: PAGE_CONFIG.ajaxCopy,
+                allowExts: PAGE_CONFIG.allowExts
+            });
+        });
+    </script>
+</head>
+<body class="upload_page">
+<div class="upload_wrapper" id="gk_upload_wrapper">
+    <div class="upload_top">
+        <div class="c_f_after upload_top_normal">
+            <span class="f_l">上传到:</span>
+            <div class="f_l bread"></div>
+        </div>
+
+    </div>
+    <div class="upload_wrapper_main">
+        <div class="upload_list">
+
+        </div>
+    </div>
+    <div class="upload_wrapper_bottom c_f">
+        <div class="f_l">
+                <span class="btn blue_btn select_file_wrapper">
+                    <span>选择文件</span>
+                    <input id="select_files" type="file" name="file" multiple/>
+                </span>
+        </div>
+        <div class="f_r">
+                <span>
+                    <input class="input_checkbox" type="checkbox" id="close_when_finish"
+                           name="close_when_finish"/><label for="close_when_finish">上传完成后关闭窗口</label>
+                </span>
+        </div>
+    </div>
+</div>
+
+<div class="ui-widget-overlay"></div>
+<div id="drop_zone">拖拽文件到这里上传</div>
+<script id="breadTmpl" type="text/x-jquery-tmpl">
+            {{each(i,bread) breads}}
+            {{if i!=0}}
+            <span>&gt;</span>
+            {{/if}}
+            <span>${bread.name}</span>
+             {{/each}}
+    </div>
+</script>
+</body>
+</html>

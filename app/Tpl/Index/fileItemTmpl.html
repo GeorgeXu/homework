@@ -1,0 +1,18 @@
+<div class="file_item"{{each(key,value) file}} data-${key}="${value}"{{/each}}>
+<div class="thumb_wrapper">
+    <img src="${file.icon}" />
+</div>
+<div class="filename">
+    {{if file.dir==1}}
+    <a class="name" href="javascript:void(0)">${file.filename}</a>
+    {{else}}
+    {{if gkHomeWorkDemo.checkAuth('download',access)}}
+    <a class="name" href="/index/download_file?path=${encodeURIComponent(file.fullpath)}">${file.filename}</a>
+    {{else}}
+    <span class="name">${file.filename}</span>
+    {{/if}}
+
+    {{/if}}
+
+</div>
+</div>

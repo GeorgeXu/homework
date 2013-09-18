@@ -1,3 +1,99 @@
+.blue_btn{
+    color: #FFF;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    background-color: #6185BC;
+    border-color: #4C6FA5;
+}
+.blue_btn:hover,
+.blue_btn:active,
+.blue_btn.active,
+.blue_btn.disabled,
+.blue_btn[disabled]{
+    background-color: #6D92CA;
+    color: #FFF;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+/*警告*/
+.alert {
+    padding: 8px 8px 8px 14px;
+    margin-bottom: 20px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    background-color: #F9FCF8;
+    border: 1px solid #84C777;
+    max-width: 300px;
+    _width: 300px;
+}
+
+.alert h4 {
+    font-weight: bold;
+    font-size: 14px;
+    white-space: nowrap;
+    padding-right: 16px;
+    text-overflow: ellipsis;
+    -moz-text-overflow: ellipsis;
+    -webkit-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.alert .close {
+    opacity: 1;
+    margin-top: -10px;
+    line-height: 20px;
+    float: right;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.alert p {
+    word-break: break-all;
+}
+
+.alert_success {
+    -webkit-box-shadow: 0 0 6px rgba(132, 199, 119, 0.8);
+    -moz-box-shadow: 0 0 6px rgba(132, 199, 119, 0.8);
+    box-shadow: 0 0 6px rgba(132, 199, 119, 0.8);
+    background-color: #F9FCF8;
+    border: 1px solid #84C777;
+}
+
+.alert_success,
+.alert_success .close {
+    text-shadow: 0 0 1px rgba(132, 199, 119, 0.25);
+    color: #84C777;
+}
+
+.alert_error {
+    -webkit-box-shadow: 0 0 6px rgba(218,73,73, 0.8);
+    -moz-box-shadow: 0 0 6px rgba(218,73,73, 0.8);
+    box-shadow: 0 0 6px rgba(218,73,73, 0.8);
+    background-color: #FEF8F6;
+    border: 1px solid #DA4949;
+}
+
+.alert_error,
+.alert_error .close {
+    text-shadow: 0 0 1px rgba(218,73,73, 0.25);
+    color: #DA4949;
+}
+
+.alert_info {
+    -webkit-box-shadow: 0 0 6px rgba(107,170,211, 0.8);
+    -moz-box-shadow: 0 0 6px rgba(107,170,211, 0.8);
+    box-shadow: 0 0 6px rgba(107,170,211, 0.8);
+    background-color: #F8FBFD;
+    border: 1px solid #6BAAD3;
+}
+
+.alert_info,
+.alert_info .close {
+    text-shadow: 0 0 1px rgba(107,170,211, 0.25);
+    color: #6BAAD3;
+}
+
 /*菊花*/
 .loading {
     margin:auto;
@@ -18,11 +114,12 @@
     background-color: #FFF;
     display: block;
     height:  100%;
-    left: 0;
+
     opacity: 0.5;
     filter: alpha(opacity=50);
     position: absolute;
     top: 0;
+    left: 0;
     width: 100%;
     z-index: 10000;
 }
@@ -53,6 +150,7 @@
     left:0;
     top:0;
     bottom:0;
+    _height:100%;
 }
 
 .content{
@@ -61,14 +159,15 @@
     left:200px;
     top:0;
     bottom:0;
+    _height:100%;
 }
 .content .file_list{
     position: absolute;
-    left:0;
+    width: 100%;
     top:47px;
-    right:0;
     bottom:0;
     overflow: auto;
+    _height:expression((document.documentElement.clientHeight-60-20-47)+"px")
 }
 .wrapper .main{
     background: #fff;
@@ -78,6 +177,7 @@
     top:60px;
     bottom:20px;
     width:1000px;
+    _height:expression((document.documentElement.clientHeight-60-20)+"px")
 }
 .header{
     height: 40px;
@@ -87,30 +187,30 @@
 .header h1{
     font-size: 20px;
 }
-
+.toolbar .btn{
+    margin:0 5px;
+}
 .content .content_header{
     border-bottom: 1px solid #ccc;
     padding:10px;
 }
 
 .view_as_thumb .file_item{
-    width:180px;
-    padding:0;
+    width:110px;
     float: left;
     display: inline;
-    margin:10px 0 10px 60px;
+    margin:10px 0 10px 40px;
     border:0;
-    padding:0 0 10px 0;
 }
 .view_as_thumb .file_item .thumb_wrapper{
-    height: 180px;
-    width:180px;
+    height: 90px;
+    width:110px;
     text-align: center;
     display: table-cell;
     vertical-align:middle;
     /* 针对IE的Hack */
     *display: block;
-    *font-size: 158px;/*约为高度的0.873，200*0.873 约为175*/
+    *font-size: 78px;/*约为高度的0.873，200*0.873 约为175*/
     *font-family:Arial;/*防止非utf-8引起的hack失效问题，如gbk编码*/
 }
 .view_as_thumb .file_item .thumb_wrapper img{
@@ -124,12 +224,11 @@
     -o-text-overflow: ellipsis;
     -moz-text-overflow: ellipsis;
     text-overflow: ellipsis;
-    margin: -10px 0 10px 0;
+    margin:0;
 }
 .view_as_thumb .file_item .filename,
 .view_as_thumb .file_item .filename a{
     color:#434343;
-    font-weight: bold;
     font-size: 14px;
     font-family: "hiragino sans gb","Helvetica Neue","Helvetica","Arial","Microsoft Yahei","宋体", "simsun","sans-serif";
 }
@@ -143,4 +242,17 @@
     text-align: center;
     width: auto;
 
+}
+.view_as_thumb .file_item_edit .filename{
+    margin: -10px 0 0 0;
+    _margin-top:-12px;
+}
+.view_as_thumb .file_item_edit .input_text_radius{
+    width:95px;
+}
+.view_as_thumb .file_item_edit .edit_btns{
+    display: none;
+}
+.view_as_thumb .file_item_edit .edit_btns .btn{
+margin-left: 8px;
 }

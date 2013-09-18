@@ -6,9 +6,11 @@
     <link type="text/css" rel="stylesheet" href="/Common/js/lib/zTree/css/zTreeStyle/zTreeStyle.css" />
     <link type="text/css" rel="stylesheet" href="/Common/css/style.css" />
     <script type="text/javascript" src="/Common/js/util.js"></script>
+    <script type="text/javascript" src="/Common/js/lib/json2.js"></script>
     <script type="text/javascript" src="/Common/js/lib/jquery.js"></script>
     <script type="text/javascript" src="/Common/js/lib/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/Common/js/lib/zTree/js/jquery.ztree.core-3.5.min.js"></script>
+    <script type="text/javascript" src="/Common/js/component/alert.js"></script>
     <script type="text/javascript" src="/Common/js/component/loader.js"></script>
     <script type="text/javascript" src="/Common/js/lib/jquery.tmpl.min.js"></script>
     <script type="text/javascript" src="/Common/js/script.js"></script>
@@ -57,36 +59,35 @@
             </div>
             <div class="f_r toolbar">
                 {{if gkHomeWorkDemo.checkAuth('upload',access)}}
-                <button class="btn">上传</button>
+                <button class="btn cmd_create_folder">新建文件夹</button>
+                <button class="btn blue_btn cmd_upload">上传</button>
                 {{/if}}
             </div>
         </div>
         <div class="view_as_thumb file_list">
             {{if files&&files.length}}
             {{each(i,file) files}}
-            <div class="file_item"{{each(key,value) file}} data-${key}="${value}"{{/each}}>
-                <div class="thumb_wrapper">
-                    <img src="${file.icon}" />
-                </div>
-                <div class="filename">
-                    {{if file.dir==1}}
-                    <a class="name" href="javascript:void(0)">${file.filename}</a>
-                    {{else}}
-                    {{if gkHomeWorkDemo.checkAuth('download',access)}}
-                    <a class="name" href="/index/download_file?path=${encodeURIComponent(file.fullpath)}">${file.filename}</a>
-                    {{else}}
-                    <span class="name">${file.filename}</span>
-                    {{/if}}
-
-                    {{/if}}
-
-                </div>
-            </div>
+            <include file="fileItemTmpl" />
             {{/each}}
             {{else}}
             <div class="empty">该文件夹为空</div>
             {{/if}}
         </div>
     </script>
+
+    <script id="newFileItemTemplate" type="text/x-jquery-tmpl">
+        <div class="file_item new_file_item file_item_edit">
+            <div class="thumb_wrapper">
+                <img src="${imgpath}" alt="" />
+            </div>
+            <div class="filename">
+                <input class="input_text_radius input_filename" type="text" value="${filename}" x-webkit-speech="" />
+            </div>
+            <div class="edit_btns"><button class="btn blue_btn">确定</button><button class="btn">取消</button></div>
+        </div>
+    </script>
+    <script id="fileItemTmpl" type="text/x-jquery-tmpl">
+        <include file="fileItemTmpl" />
+        </script>
 </body>
 </html>
