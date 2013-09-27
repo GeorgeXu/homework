@@ -141,6 +141,35 @@ class GokuaiClient {
     }
 
     /**
+     * 上传文件内容
+     * @param string $content 文件内容
+     * @param string $upload_server 上传服务器地址
+     * @param string $fullpath 待上传的文件路径
+     * @param string $mount
+     * @return array
+     */
+    public function uploadByContent($content, $upload_server, $fullpath, $mount = 'gokuai') {
+        if (!strlen($content)) {
+            return false;
+        }
+        $url = $upload_server . '/1/file/upload';
+        $parameters = array('token' => $this->token,
+                            'fullpath' => $fullpath,
+                            'mount' => $mount);
+        $parameters['sign'] = $this->getSign($parameters);
+        $parameters['filefield'] = 'file';
+        $url .= '?';
+        foreach ($parameters as $k => $v) {
+            $url .= sprintf('%s=%s&', $k, rawurlencode($v));
+        }
+        $url = trim($url, '&');
+        $key = "file\"; filename=\"file\"\r\nContent-Type: application/octet-stream\r\nAccept: \"";
+        $posts = array($key => $content);
+        $this->response = self::http($url, 'POST', $posts, array(), $this->http_code, $this->error, true);
+        return $this->handleResponse();
+    }
+
+    /**
      * 获取最后一次http请求返回状态
      * @return int
      */
