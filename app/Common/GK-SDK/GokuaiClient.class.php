@@ -54,7 +54,7 @@ class GokuaiClient {
      * @param string $fullpath 获取哪个路径下的文件列表
      * @param int $start 第几条记录开始获取, 默认0
      * @param string $mount
-     * @return bool|mixed
+     * @return bool|array
      */
     public function getFileList($fullpath, $start = 0, $mount = 'gokuai') {
         $url = self::API_URL . '/1/file/ls';
@@ -71,7 +71,7 @@ class GokuaiClient {
      * 获取文件信息
      * @param string $fullpath 文件的完整路径
      * @param string $mount
-     * @return bool|mixed
+     * @return bool|array
      */
     public function getFileInfo($fullpath, $mount = 'gokuai') {
         $url = self::API_URL . '/1/file/info';
@@ -87,7 +87,7 @@ class GokuaiClient {
      * 创建文件夹
      * @param string $fullpath 待创建的文件夹的完整路径
      * @param string $mount
-     * @return bool|mixed
+     * @return bool|array
      */
     public function createFolder($fullpath, $mount = 'gokuai') {
         $url = self::API_URL . '/1/file/create_folder';
@@ -103,7 +103,7 @@ class GokuaiClient {
      * 获取文件上传地址
      * @param string $fullpath 待上传的文件完整路径
      * @param string $mount
-     * @return bool|array
+     * @return null|string
      */
     public function getUploadServer($fullpath, $mount = 'gokuai') {
         $url = self::API_URL . '/1/file/upload_server';
@@ -114,6 +114,26 @@ class GokuaiClient {
         $this->response = self::http($url, 'POST', $parameters, array(), $this->http_code, $this->error);
         $json = $this->handleResponse();
         return $json['server'];
+    }
+
+    /**
+     * 保存外链文件到够快
+     * @param string $code 外链code
+     * @param string $path 外链中的文件相对路径
+     * @param string $to_fullpath 保存目标目录
+     * @param string $to_mount
+     * @return bool|array
+     */
+    public function save($code , $path = '', $to_fullpath = '', $to_mount = 'gokuai') {
+        $url = self::API_URL . '/1/file/save';
+        $parameters = array('token' => $this->token,
+                            'code' => $code,
+                            'path' => $path,
+                            'to_fullpath' => $to_fullpath,
+                            'to_mount' => $to_mount);
+        $parameters['sign'] = $this->getSign($parameters);
+        $this->response = self::http($url, 'POST', $parameters, array(), $this->http_code, $this->error);
+        return $this->handleResponse();
     }
 
     /**
@@ -166,6 +186,22 @@ class GokuaiClient {
         $key = "file\"; filename=\"file\"\r\nContent-Type: application/octet-stream\r\nAccept: \"";
         $posts = array($key => $content);
         $this->response = self::http($url, 'POST', $posts, array(), $this->http_code, $this->error, true);
+        return $this->handleResponse();
+    }
+
+    /**
+     * 删除文件(夹)
+     * @param string $fullpath 待删除的文件(夹)的完整路径
+     * @param string $mount
+     * @return bool|array
+     */
+    public function del($fullpath, $mount = 'gokuai') {
+        $url = self::API_URL . '/1/file/del';
+        $parameters = array('token' => $this->token,
+                            'fullpath' => $fullpath,
+                            'mount' => $mount);
+        $parameters['sign'] = $this->getSign($parameters);
+        $this->response = self::http($url, 'POST', $parameters, array(), $this->http_code, $this->error);
         return $this->handleResponse();
     }
 
